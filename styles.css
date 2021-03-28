@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    border: border-box; 
+    position: relative;
+}
+
+.banner {
+    padding: 30px;
+    background-color: #176cff;
+    text-align: center;
+    font-size: 30px;
+    color: #eee;
+}
