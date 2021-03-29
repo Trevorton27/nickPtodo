@@ -9,5 +9,57 @@
     background-color: #176cff;
     text-align: center;
     font-size: 30px;
-    color: #eee;
+    color:white;
+}
+
+body {
+    background-color: #f1f6fc; 
+}
+
+body > form {
+    text-align: center;
+    border: 2px solid #aaa;
+    border-radius: 3px;
+    padding: 20px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 3%;
+}
+input {
+    width: 55%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+    border-radius: 3px;
+    color:white;
+}
+input:focus {
+    background-color: ;
+    
+}
+
+#add-btn {
+    cursor: pointer;
+    border: none;
+    padding: 8px 15px;
+    text-decoration: none;
+    background-color: #176cff;
+    border-radius: 5px;
+}
+
+ #plus-icon {
+    color: white;
+}
+
+li {
+    position: relative;
+    justify-content: center;
+    list-style-type: circle;
+    display: flex;
+    padding: 10px;
+    color: #176cff;
+    font-size: larger;
+    font-weight: bold;
 }

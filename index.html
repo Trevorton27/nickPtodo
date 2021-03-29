@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" 
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" 
+    crossorigin="anonymous" />
     <title>My To-Do</title>
 </head>
 <body>
 <div class="banner">
     <h1 id="heading">Stuffs to do....</h1>
+</div>
+<form>
+    <input id="new-task" type="text" placeholder="New Task" name="new-task">
+    <button id="add-btn" class="todo-button" type="submit">
+        <i id="plus-icon" class="fas fa-plus-square"></i>
+    </button> 
+    <div class="list-items">
+        <ul id="list">
+            <li id="list-item">Item1</li>
+            <li id="list-item">Item2</li>
+            <li id="list-item">Item3</li>
+        </ul>
+    </div>
+</form>
 </div>
     <script src="app.js"></script>
 </body>
