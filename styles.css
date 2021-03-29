@@ -33,10 +33,10 @@ input {
     border: 1px solid #555;
     outline: none;
     border-radius: 3px;
-    color:white;
+    color:#555;
 }
 input:focus {
-    background-color: ;
+    background-color: lightskyblue;
     
 }
 
@@ -49,17 +49,18 @@ input:focus {
     border-radius: 5px;
 }
 
- #plus-icon {
-    color: white;
-}
-
-li {
+.list-item {
     position: relative;
     justify-content: center;
-    list-style-type: circle;
     display: flex;
     padding: 10px;
     color: #176cff;
     font-size: larger;
     font-weight: bold;
+    border: 1px solid #555;
+    margin: .5em;
+}
+
+#plus-icon {
+    color: white;
 }
