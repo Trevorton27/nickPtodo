@@ -7,8 +7,9 @@ function addListItem(event) {
     const newLI = document.createElement('LI');
     newLI.innerHTML = input;
     newLI.classList.add('list-item');
+    newLI.setAttribute('id', 'list-item');
     document.getElementById('list').appendChild(newLI);
- 
+    console.log(newLI)
  }
 
 

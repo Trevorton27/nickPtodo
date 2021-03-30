@@ -64,3 +64,26 @@ input:focus {
 #plus-icon {
     color: white;
 }
+
+#complete-btn {
+    background-color: rgb(70, 197, 70);
+    color:antiquewhite;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    margin-right: 90%;
+   
+}
+
+
+#dlt-btn {
+
+    background-color: rgb(245, 70, 70);
+    color: aliceblue;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    position: absolute;
+    margin-left: 90%;
+}
