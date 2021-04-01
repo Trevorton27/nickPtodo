@@ -1,4 +1,4 @@
-
+const taskList = document.getElementById('list');
 const newItem = document.getElementById('add-btn').addEventListener('click', addListItem);
 
 function addListItem(event) {
@@ -9,8 +9,6 @@ function addListItem(event) {
         alert("Please Enter Some Text!!!")
     }
     else {
-    const taskList = document.getElementById('list');
-
     const newLI = document.createElement('LI');
     newLI.textContent = input.value;   
     newLI.setAttribute('id', 'list-item');
@@ -35,12 +33,14 @@ function addListItem(event) {
 
 
 function deleteItem(event) {
-    event.preventDefault();
-    const item = document.getElementById('list-item')
+    event.preventDefault()
     const deleteListItem = document.getElementById('dlt-btn')
     deleteListItem.addEventListener('click', function () {
-        item.removeChild()
-       })
+        if (event.target.classList.contains('delete')){
+            let li = event.target.parentElement;
+            taskList.removeChild(li)
+            }
+        })
     }
 
 function lineThruText(event) {
