@@ -51,7 +51,7 @@ input:focus {
     border-radius: 5px;
 }
 
-.list-item {
+#list-item {
     position: relative;
     justify-content: center;
     display: flex;

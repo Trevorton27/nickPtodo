@@ -1,31 +1,43 @@
-const newItem = document.getElementById('add-btn').addEventListener('click', addListItem);
+const newItem = document.querySelector('#add-btn').addEventListener('click', addListItem);
 const deleteListItem = document.getElementById('dlt-btn').addEventListener('click', deleteItem);
 const lineThru = document.getElementById('complete-btn').addEventListener('click', strikeThru);
-const addDB = document.getElementById("add-btn").addEventListener('click', addDeleteButton);
+
 
 
 function addListItem(event) {
+    // Stop Automatic Browser Refresh
     event.preventDefault();
-    const input = document.getElementById('new-task').value;
+    
+    const input = document.getElementById('new-task');
+    // Preventing Empty List Item // "required" in (HTML) was not functioning "??"
+    if (input.value == ''){
+        alert("Please Enter Some Text!!!")
+    }
+    else {
+    const taskList = document.getElementById('list');
+    //Create New List and Button Elements
     const newLI = document.createElement('LI');
-    newLI.innerHTML = input;
-    newLI.classList.add('list-item');
+    const deleteButton = document.createElement('BUTTON');
+    const completeButton = document.createElement('BUTTON');
+    //Set Text Content of Buttons
+    deleteButton.textContent = "X"
+    completeButton.textContent = "0"
+    //Get Text from Input Field
+    newLI.textContent = input.value;
+    //Give New Elements ID's
     newLI.setAttribute('id', 'list-item');
-    document.getElementById('list').appendChild(newLI);
-    console.log(newLI);
+    deleteButton.setAttribute('id', 'dlt-btn');
+    completeButton.setAttribute('id', 'complete-btn');
+    //Append Our List Item to the Document
+    taskList.append(newLI);
+    newLI.append(deleteButton);
+    newLI.append(completeButton);
+    //Clear Input After Click Event
+    input.value = '';
+    console.log(newLI)
+    }
  }
 
- function addDeleteButton (event){
-    event.preventDefault();
-    const btn = document.getElementById('dlt-btn').value;
-    const newDeleteButton = document.createElement('BUTTON');
-    btn.innerHTML = newDeleteButton;
-    document.getElementById('list').appendChild(newDeleteButton);
-    newDeleteButton.setAttribute('id', 'dlt-btn');
-    newDeleteButton.classList.add('delete');
-    console.log(newDeleteButton);
-
- }
 
 function deleteItem(event) {
     event.preventDefault();
