@@ -1,13 +1,8 @@
-const newItem = document.querySelector('#add-btn').addEventListener('click', addListItem);
-const deleteListItem = document.getElementById('dlt-btn').addEventListener('click', deleteItem);
-const lineThru = document.getElementById('complete-btn').addEventListener('click', strikeThru);
 
-
+const newItem = document.getElementById('add-btn').addEventListener('click', addListItem);
 
 function addListItem(event) {
-    // Stop Automatic Browser Refresh
     event.preventDefault();
-    
     const input = document.getElementById('new-task');
     // Preventing Empty List Item // "required" in (HTML) was not functioning "??"
     if (input.value == ''){
@@ -15,24 +10,24 @@ function addListItem(event) {
     }
     else {
     const taskList = document.getElementById('list');
-    //Create New List and Button Elements
+
     const newLI = document.createElement('LI');
-    const deleteButton = document.createElement('BUTTON');
-    const completeButton = document.createElement('BUTTON');
-    //Set Text Content of Buttons
-    deleteButton.textContent = "X"
-    completeButton.textContent = "0"
-    //Get Text from Input Field
-    newLI.textContent = input.value;
-    //Give New Elements ID's
+    newLI.textContent = input.value;   
     newLI.setAttribute('id', 'list-item');
+
+    const deleteButton = document.createElement('BUTTON');
+    deleteButton.textContent = "X"
     deleteButton.setAttribute('id', 'dlt-btn');
+    deleteButton.classList.add('delete');  
+
+    const completeButton = document.createElement('BUTTON');
+    completeButton.textContent = "0"
     completeButton.setAttribute('id', 'complete-btn');
-    //Append Our List Item to the Document
+  
     taskList.append(newLI);
     newLI.append(deleteButton);
     newLI.append(completeButton);
-    //Clear Input After Click Event
+  
     input.value = '';
     console.log(newLI)
     }
@@ -41,11 +36,14 @@ function addListItem(event) {
 
 function deleteItem(event) {
     event.preventDefault();
-    console.log('delete-clicked');
-}
+    const item = document.getElementById('list-item')
+    const deleteListItem = document.getElementById('dlt-btn')
+    deleteListItem.addEventListener('click', function () {
+        item.removeChild()
+       })
+    }
 
-function strikeThru(event) {
+function lineThruText(event) {
     event.preventDefault();
-    console.log('complete-clicked');  
 }
 
