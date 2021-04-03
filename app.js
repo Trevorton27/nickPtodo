@@ -1,49 +1,82 @@
+const todoArray = JSON.parse(localStorage.getItem('todoArray')) || [];
 
-document.getElementById('add-btn')
-.addEventListener('click', addListItem);
+document.getElementById('add-btn').addEventListener('click', (e) => {
+  e.preventDefault();
 
-function addListItem(event) {
-    event.preventDefault()
-    const input = document.getElementById('new-task');
-    const text = input.value;
-    const newLI = document.createElement('li');
-    const taskList = document.getElementById('list');
-    const deleteButton = createDeleteButton(newLI);
-    const completeButton = createCompleteButton(newLI);
+  const input = document.getElementById('new-task');
+  const text = input.value;
 
-    newLI.textContent = text;   
+  text ? addTodo(text) : alert('Please add a todo item before submitting. :-)');
 
-    newLI.append(deleteButton);
-    newLI.append(completeButton);
-    taskList.append(newLI);
-    
-    newLI.setAttribute('id', 'list-item');
+  input.value = '';
+});
 
-    input.value = '';
- }
+function addTodo(text) {
+  const todoItem = {
+    id: Math.random(),
+    text: text
+  };
+  addListItem(todoItem);
+  todoArray.push(todoItem);
+  pushToLocalStorage(todoItem);
 
+  console.log('todoArray: ', todoArray);
+}
 
-function createDeleteButton(newLI) {
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = "X";
-    deleteButton.setAttribute('id', 'dlt-btn');
+function addListItem(todoItem) {
+  const newLI = document.createElement('li');
+  const taskList = document.getElementById('list');
+  const completeButton = createCompleteButton(newLI);
 
-    deleteButton.addEventListener('click', () => {
-        newLI.remove()
-    })
-    return deleteButton;
- }
-  
+  newLI.textContent = todoItem.text;
+
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'X';
+  deleteButton.setAttribute('id', 'dlt-btn');
+
+  newLI.appendChild(deleteButton);
+  newLI.appendChild(completeButton);
+  taskList.appendChild(newLI);
+  newLI.setAttribute('id', 'list-item');
+
+  deleteButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    deleteRow(deleteButton, todoItem);
+  });
+
+  console.log('parentElement: ', deleteButton.parentElement);
+}
 
 function createCompleteButton(newLI) {
-    
-    const completeButton = document.createElement('button');
-    completeButton.textContent = "O";
-    completeButton.setAttribute('id', 'complete-btn');
+  const completeButton = document.createElement('button');
+  completeButton.textContent = 'O';
+  completeButton.setAttribute('id', 'complete-btn');
 
-    completeButton.addEventListener('click', (event) => {
-        event.preventDefault()
-        newLI.style.textDecoration = 'line-through';
-    })
-    return completeButton;
- }
+  completeButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    newLI.classList.toggle('lineThrough');
+  });
+  return completeButton;
+}
+
+function pushToLocalStorage(todoItem) {
+  localStorage.setItem('todoArray', JSON.stringify(todoArray));
+}
+
+function deleteRow(deleteButton, todoItem) {
+  deleteButton.parentElement.remove();
+  for (let i = 0; i < todoArray.length; i++) {
+    if (todoArray[i].id === todoItem.id) {
+      todoArray.splice(i, 1);
+      localStorage.setItem('todoArray', JSON.stringify(todoArray));
+      console.log('todoArray: ', todoArray);
+    }
+  }
+}
+
+window.addEventListener('load', (e) => {
+  e.preventDefault();
+  todoArray.forEach((todo) => {
+    addListItem(todo);
+  });
+});
